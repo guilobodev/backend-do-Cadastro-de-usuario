@@ -20,7 +20,7 @@ app.listen(3000, function (){
 })
 
 app.post("/post", async (req,res) => {
-    await prisma.user.create({
+    await prisma.atendimento.create({
         data: {
             name: req.body.name,
             servico: req.body.servico,
@@ -32,13 +32,13 @@ app.post("/post", async (req,res) => {
 })
 
 app.get("/usuarios", async (req, res) => {
-    const result = await prisma.user.findMany()
+    const result = await prisma.atendimento.findMany()
     res.json(result)
 })
 
 app.put("/put/:id", async (req,res) => {
     const {id} = req.params;
-    await prisma.user.update({
+    await prisma.atendimento.update({
         where: {
             id: parseInt(id)
         },
@@ -55,7 +55,7 @@ app.put("/put/:id", async (req,res) => {
 
 app.delete("/delete/:id", async (req,res) => {
     const {id} = req.params;
-    await prisma.user.delete({
+    await prisma.atendimento.delete({
         where: {
             id: parseInt(id)
         }
